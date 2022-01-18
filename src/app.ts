@@ -9,7 +9,7 @@ const cors = require('cors');
 const xss = require('xss-clean');
 const rateLimiter = require('express-rate-limit');
 const app = express();
-
+console.log('object');
 // extra security packages
 app.set('trust  proxy', 1);
 app.use(
