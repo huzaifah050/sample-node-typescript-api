@@ -5,8 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "ts-node-dev --respawn --transpile-only src/app.ts",
-		"start": "node .",
-		"build": "babel --delete-dir-on-start --out-dir dist --copy-files --extensions \".ts,.tsx,.js\" --ignore \"**/__tests__/**,**/__mocks__/**\" --no-copy-ignored src "
+		"start": "node src/app.ts"
 	},
 	"engines": {
 		"node": "17.x"
@@ -25,11 +24,6 @@
 		"xss-clean": "^0.1.1"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.16.8",
-		"@babel/core": "^7.16.7",
-		"@babel/preset-env": "^7.16.8",
-		"@babel/preset-typescript": "^7.16.7",
-		"@babel/register": "^7.16.9",
 		"@types/express": "^4.17.13",
 		"@types/mongoose": "^5.11.97",
 		"@types/node": "^17.0.9",
