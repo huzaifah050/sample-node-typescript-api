@@ -27,7 +27,7 @@ app.get('/', (req: Request, res: Response) => {
 	res.send('Hello');
 });
 
-// app.use('/api/v1/products', productsRouter);
+app.use('/api/v1/products', productsRouter);
 
 const port = process.env.PORT || 8080;
 
