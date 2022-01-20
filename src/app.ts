@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 const connectDB = require('./db/connect');
 require('dotenv').config();
 const productsRouter = require('./routes/products.routes');
+const path = require('path');
 //Security
 const helmet = require('helmet');
 const cors = require('cors');
@@ -23,10 +24,17 @@ app.use(helmet());
 app.use(cors());
 app.use(xss());
 
+//Swagger API
+const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swagger_path = path.resolve(__dirname, './swagger.yaml');
+const swaggerDocument = YAML.load(swagger_path);
+
 app.get('/', (req: Request, res: Response) => {
-	res.send('Hello');
+	res.send('<h1>Sample API</h1><a href="/api-docs">Documentation</a>');
 });
 
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use('/api/v1/products', productsRouter);
 
 const port = process.env.PORT || 8080;

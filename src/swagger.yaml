@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  title: Sample-api
+  contact: {}
+  version: '1.0'
+servers:
+  - url: https://sample-api-frontend.herokuapp.com
+    variables: {}
+paths:
+  /api/v1/products:
+    get:
+      tags:
+        - Misc
+      summary: Get all request with search and pagination
+      operationId: Getallrequestwithsearchandpagination
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    post:
+      tags:
+        - Misc
+      summary: Post content
+      operationId: Postcontent
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostcontentRequest'
+            example:
+              name: Fruits
+              price: '90'
+              rating: 7
+              available: true
+              manufacturer: companyC
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /api/v1/products/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The product ID
+    get:
+      tags:
+        - Misc
+      summary: Get one request
+      operationId: Getonerequest
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /:
+    get:
+      tags:
+        - Test Route
+      summary: First route
+      operationId: Firstroute
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    PostcontentRequest:
+      title: PostcontentRequest
+      required:
+        - name
+        - price
+        - rating
+        - available
+        - manufacturer
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: string
+        rating:
+          type: integer
+          format: int32
+        available:
+          type: boolean
+        manufacturer:
+          type: string
+      example:
+        name: Fruits
+        price: '90'
+        rating: 7
+        available: true
+        manufacturer: companyC
+tags:
+  - name: Test Route
+    description: ''
+  - name: Misc
+    description: ''
